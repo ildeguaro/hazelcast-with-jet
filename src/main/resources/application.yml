@@ -1,0 +1,26 @@
+server:
+  port: 8000
+  
+spring:
+  profiles:
+    active:
+    - dev
+  application:
+    name: cloud-words-app
+  
+  hazelcast:
+    config: 
+    
+hazelcast-jet:
+  SP_WORKER_GET: USRDBMBPS.SP_LIST_RENIEC_USERS
+  SP_SINGLE_WORKER_GET: USRDBMBPS.SP_GET_RENIEC_USER
+  timeReload: 0 30 23 * * *
+  instanceName: service
+  port: 5701
+  QueueSize: 1024
+  PacketSizeLimit: 16384
+  ReceiveWindowMultiplier: 3
+  OutboxCapacity: 2048
+  CooperativeThreadCount: 8
+  FlowControlPeriodMs: 100
+  TempDir: /var/tmp/jet
